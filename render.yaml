@@ -7,4 +7,4 @@ services:
     startCommand: npx serve -s dist
     envVars:
       - key: VITE_API_KEY
-        value: AIzaSyCjmtyT72sHPBKxjFKu1i39jYu-UIC9FVI
+        value: 'your_api_key'
