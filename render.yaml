@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: vite-react-app
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npx serve -s dist
+    envVars:
+      - key: VITE_API_KEY
+        value: AIzaSyCjmtyT72sHPBKxjFKu1i39jYu-UIC9FVI
