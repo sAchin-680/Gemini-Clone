@@ -5,6 +5,7 @@
   justify-content: space-between;
   background-color: #f0f4f9;
   padding: 25px 15px;
+  overflow-y: auto; /* Allows scrolling if content overflows */
 }
 
 .sidebar img {
@@ -27,16 +28,23 @@
   font-size: 14px;
   color: grey;
   cursor: pointer;
+  background-color: #e0e7f1; /* Light background for better visibility */
 }
-
+.sidebar .new-chat:hover {
+  background-color: #d1d8e0; /* Hover effect for better interaction */
+}
 .sidebar .recent {
   display: flex;
   flex-direction: column;
+  animation: fadeIn 1.5s;
 }
 
 .sidebar .recent-title {
   margin-top: 30px;
   margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #3a3a3a;
 }
 
 .sidebar .recent-entry {
@@ -57,9 +65,13 @@
 .sidebar .bottom {
   display: flex;
   flex-direction: column;
+  gap: 15px; /* Adding gap for better spacing */
 }
 
 .sidebar .bottom-item {
   padding-right: 10px;
   cursor: pointer;
+}
+.sidebar .bottom-item:hover {
+  color: #1e90ff; /* Slight color change on hover for better UX */
 }
