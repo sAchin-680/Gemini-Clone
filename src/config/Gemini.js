@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const MODEL_NAME = 'gemini-1.0-pro';
-const API_KEY = 'AIzaSyCjmtyT72sHPBKxjFKu1i39jYu-UIC9FVI';
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 async function runChat(prompt) {
   const genAI = new GoogleGenerativeAI(API_KEY);
