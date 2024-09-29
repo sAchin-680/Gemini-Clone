@@ -1,34 +1,36 @@
-import {
-  GoogleGenerativeAI,
-  // HarmCategory,
-  // HarmBlockThreshold,
-} from '@google/generative-ai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-const genAI = new GoogleGenerativeAI(apiKey);
-
-const model = genAI.getGenerativeModel({
-  model: 'gemini-1.5-flash',
-});
-
-const generationConfig = {
-  temperature: 1,
-  topP: 0.95,
-  topK: 64,
-  maxOutputTokens: 8192,
-  responseMimeType: 'text/plain',
-};
+const MODEL_NAME = 'gemini-1.0-pro';
+const API_KEY = 'AIzaSyCjmtyT72sHPBKxjFKu1i39jYu-UIC9FVI';
 
 async function runChat(prompt) {
-  const chatSession = model.startChat({
+  const genAI = new GoogleGenerativeAI(API_KEY);
+  const model = genAI.getGenerativeModel({ model: MODEL_NAME });
+
+  const generationConfig = {
+    temperature: 0.7,
+    topK: 1,
+    topP: 1,
+    maxOutputTokens: 2048,
+  };
+
+  const safetySettings = [];
+
+  const chat = model.startChat({
     generationConfig,
+    safetySettings,
     history: [],
   });
 
-  const result = await chatSession.sendMessage(prompt);
-  const response = {};
-  console.log(result.response.text());
-  return response.text();
+  try {
+    const result = await chat.sendMessage(prompt);
+    const response = result.response;
+    console.log(response.text());
+    return response.text();
+  } catch (error) {
+    console.error('Error sending message:', error);
+    throw error;
+  }
 }
 
 export default runChat;

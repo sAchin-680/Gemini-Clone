@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Sidebar.css';
 import { assets } from '../../assets/assets.js';
-import { Context } from '../../context/Content';
+import { Context } from '../../context/Context.jsx';
 
 const Sidebar = () => {
   const [extended, setExtended] = useState(false);
@@ -25,7 +25,7 @@ const Sidebar = () => {
           <img src={assets.plus_icon} alt='New Chat' />
           {extended ? <p>New Chat</p> : null}
         </div>
-        {extended && (
+        {extended ? (
           <div className='recent'>
             <p className='recent-title'>Recent</p>
             {prevPrompts.map((item, index) => (
@@ -39,7 +39,7 @@ const Sidebar = () => {
               </div>
             ))}
           </div>
-        )}
+        ) : null}
       </div>
 
       <div className='bottom'>

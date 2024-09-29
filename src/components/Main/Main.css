@@ -1,13 +1,17 @@
+/* Main Fullscreen Container */
 .main {
-  flex: 1;
-  padding: 0 40px; /* Adjust for padding */
-  min-height: 100vh;
-  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 40px;
+  background-color: #ffffff;
+  /* overflow-y: auto; */
   position: relative;
-  background-color: #ffffff; /* Optional: Background for better distinction */
-  overflow-y: auto; /* Scrollable in case content overflows */
+  box-sizing: border-box;
 }
 
+/* Navigation Bar */
 .main .nav {
   display: flex;
   align-items: center;
@@ -20,46 +24,53 @@
 .main .nav img {
   width: 40px;
   border-radius: 50%;
-  position: relative;
 }
 
+/* Main Content Container */
 .main-container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: auto;
+  width: 100%; /* Ensure full width */
+  height: calc(100vh - 60px); /* Adjust height to account for other elements */
+  overflow-y: auto;
 }
 
+/* Greeting Section */
 .main .greet {
-  margin: 50px 0 px;
-  font-size: 56px;
+  margin: 50px 0;
+  font-size: 48px;
   color: #c4c7c5;
-  font-weight: 500;
-  padding: 40px 0;
+  font-weight: 600;
+  padding: 20px 0;
 }
 
 .main .greet span {
-  background: -webkit-linear-gradient(16deg, #4b90ff, #ff5546);
-  -webkit-background-clip: text;
+  background: linear-gradient(16deg, #4b90ff, #ff5546);
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Card Grid */
 .main .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
   padding: 20px;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
 }
 
+/* Card Styling */
 .main .card {
-  height: 200px;
-  padding: 15px;
-  border-color: #f0f4f9;
-  border-radius: 10px;
+  height: 220px;
+  padding: 20px;
+  background-color: #f0f4f9;
+  border-radius: 12px;
   position: relative;
   cursor: pointer;
-  background-color: #fff;
+  border-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
 .main .card img {
@@ -67,7 +78,7 @@
   padding: 5px;
   position: absolute;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 50%;
   bottom: 10px;
   right: 10px;
 }
@@ -82,15 +93,17 @@
   background-color: #dfe4ea;
 }
 
+/* Bottom Section */
 .main-bottom {
-  position: relative;
+  position: absolute;
   bottom: 0;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
   padding: 20px;
   margin: auto;
 }
 
+/* Search Box */
 .search-box {
   display: flex;
   align-items: center;
@@ -98,9 +111,9 @@
   padding: 10px 20px;
   border-radius: 50px;
   background-color: #f0f4f9;
-  border-radius: 50px;
   gap: 20px;
 }
+
 .search-box img {
   width: 24px;
   cursor: pointer;
@@ -121,13 +134,15 @@
   gap: 15px;
 }
 
+/* Bottom Info Text */
 .main .bottom-info {
   font-size: 13px;
   margin: 15px auto;
-  align-items: center;
+  text-align: center;
   font-weight: 300;
 }
 
+/* Result Section */
 .result {
   padding: 0 5px;
   max-height: 70vh;
@@ -139,7 +154,7 @@
 }
 
 .result-title {
-  margin: 40px 0px;
+  margin: 40px 0;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -156,27 +171,28 @@
   gap: 20px;
 }
 
+/* Loader Animation */
 .loader {
   width: 100%;
   display: flex;
+  flex-direction: column;
   gap: 10px;
 }
+
 .loader hr {
   border-radius: 4px;
   border: none;
-  background-color: #f6f7f8;
   background: linear-gradient(to right, #9ed7ff, #ffffff, #9ed7ff);
-  background-size: 800px 50px;
   height: 20px;
   animation: loader 3s infinite linear;
 }
 
 @keyframes loader {
   0% {
-    background-position: -800px 0px;
+    background-position: -800px 0;
   }
   100% {
-    background-position: 800px 0px;
+    background-position: 800px 0;
   }
 }
 
@@ -186,18 +202,25 @@
   line-height: 1.8;
 }
 
+/* Responsive Adjustments */
 @media (max-width: 600px) {
-  .main-bottom input {
-    flex: none;
-    width: 150px;
-  }
-  .main-bottom img {
-    width: 20px;
-  }
   .search-box {
     padding: 5px 10px;
   }
-  .search-box div {
-    gap: 5px;
+
+  .search-box input {
+    width: 150px;
+  }
+
+  .search-box img {
+    width: 20px;
+  }
+
+  .main .greet {
+    font-size: 36px;
+  }
+
+  .main .card {
+    height: 180px;
   }
 }

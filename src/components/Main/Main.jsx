@@ -1,7 +1,7 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import './Main.css';
 import { assets } from '../../assets/assets';
-import { Context } from '../../context/Content';
+import { Context } from '../../context/Context';
 const Main = () => {
   const {
     onSent,
@@ -27,7 +27,7 @@ const Main = () => {
                 <p>
                   <span>Hello, Dev.</span>
                 </p>
-                <p>How can I help you today.</p>
+                <p>How can I help you today?</p>
               </div>
               <div className='cards'>
                 <div className='card'>

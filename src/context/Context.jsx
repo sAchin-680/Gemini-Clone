@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import runChat from '../config/Gemini';
 
@@ -21,7 +21,7 @@ const ContextProvider = (props) => {
   const [resultData, setResultData] = useState('');
 
   const delayPara = (index, nextWord) => {
-    setTimeout(() => {
+    setTimeout(function () {
       setResultData((prev) => prev + nextWord);
     }, 75 * index);
   };
@@ -40,15 +40,14 @@ const ContextProvider = (props) => {
     setPrevPrompts((prev) => [...prev, actualPrompt]);
     setRecentPrompt(actualPrompt);
 
-    const chatResponse = await runChat(actualPrompt);
-    let responseArray = chatResponse.split('**');
-    let newResponse = '';
-
+    const response = await runChat(actualPrompt);
+    let responseArray = response.split('**');
+    let newResponse;
     for (let i = 0; i < responseArray.length; i++) {
       if (i === 0 || i % 2 !== 1) {
         newResponse += responseArray[i];
       } else {
-        newResponse += `<b>${responseArray[i]}</b>`;
+        newResponse += '<b>' + responseArray[i] + '</b>';
       }
     }
 
@@ -56,7 +55,7 @@ const ContextProvider = (props) => {
     let newResponseArray = newResponse2.split(' ');
 
     for (let i = 0; i < newResponseArray.length; i++) {
-      let nextWord = newResponseArray[i];
+      const nextWord = newResponseArray[i];
       delayPara(i, nextWord + ' ');
     }
 
