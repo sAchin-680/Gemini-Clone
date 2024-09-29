@@ -132,9 +132,6 @@ And following the respective deployment documentation.
 ```
 gemini-clone/
 .
-├── .github
-│   └── workflows
-│       └── [GitHub Actions Configuration Files]
 ├── public
 │   └── [Static Assets, e.g., index.html, favicon, etc.]
 ├── src
@@ -145,7 +142,6 @@ gemini-clone/
 ```
 ### Description of Key Files ###
 
-- `.github/workflows/`: Contains GitHub Actions configuration for CI/CD pipelines.
 - `public/`: Contains static assets like the `index.html` and other public files.
 - `src/`: Holds the source code for the app, including components, hooks, and logic.
 - `.gitignore`: Specifies intentionally untracked files to ignore.
